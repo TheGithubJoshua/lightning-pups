@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lightning Pups - Powered by Mash</title>
+    <!-- See more about the NES.css library here: https://nostalgic-css.github.io/NES.css/ -->
+    <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="/src/main.js" defer></script>
+  </head>
+  <!-- Modify this with the contents of your own app or website -->
+  <body>
+    <!--
+      ==================================================
+       STEP 5: Adding a Boost button for one-click tips
+      ==================================================
+      Mash provides a prebuilt web component that allows your users to send you a donation with one click.
+      Every click of the button sends you $0.05 in bitcoin, allowing users to show their appreciation for your project!
+      For more information on how the Boost button can be configured, see https://docs.getmash.com/.
+      
+      Instructions:
+        5a. Uncomment the HTML snippet below. After doing this, the Boost button will appear as a heart button in the
+            bottom right of this app.
+    -->
+    
+    
+    <mash-boost-button
+      display-mode="icon-only"
+      float-location="bottom-right"
+    ></mash-boost-button>
+    
+    <div id="loading-screen">
+      <h1>Powered by Mash</h1>
+      <img class="mash-logo" src="assets/pixelated_mash.png" />
+    </div>
+    <div id="app">
+      <h2 id="title" class="nes-text">Lightning Pups</h2>
+      <div id="rock-container">
+        <img id="rock" src="assets/rock.png" />
+        <div id="speech-bubble" class="nes-balloon from-right is-dark hidden">
+          <p id="speech-bubble-content">Waiting...</p>
+        </div>
+        <div id="hearts">
+          <i class="nes-icon small heart is-empty"></i>
+          <i class="nes-icon heart is-empty"></i>
+          <i class="nes-icon heart is-empty"></i>
+          <i class="nes-icon heart is-empty"></i>
+        </div>
+      </div>
+      <div class="nes-container with-title is-dark is-rounded">
+        <p class="title">Make a selection...</p>
+        <form id="selection-form">
+          <div id="choices">
+            <label>
+              <input
+                type="radio"
+                class="nes-radio is-dark"
+                name="choice"
+                value="pet"
+                checked
+              />
+              <span>Pet</span>
+            </label>
+            <label>
+              <input
+                type="radio"
+                class="nes-radio is-dark"
+                name="choice"
+                value="exit"
+              />
+              <span>Exit</span>
+            </label>
+
+          <label>
+              <input
+                type="radio"
+                class="nes-radio is-dark"
+                name="choice"
+                value="pet"
+                checked
+              />
+              <span>Feed</span>
+            </label>
+            
+          </div>
+          <button
+            id="submit-button"
+            type="submit"
+            class="nes-btn is-primary"
+          >
+            Select
+          </button>
+        </form>
+      </div>
+    </div>
+    <dialog class="nes-dialog is-dark" id="exit-dialog">
+      <form method="dialog">
+        <p class="title">There is nowhere to go.</p>
+        <p>There is only this puppy. Try petting them.</p>
+        <menu class="dialog-menu">
+          <button class="nes-btn">Ok...</button>
+        </menu>
+      </form>
+    </dialog>
+    <dialog class="nes-dialog is-dark" id="win-dialog">
+      <form method="dialog">
+        <p class="title">Wow, great job.</p>
+        <p>You won. Look how happy they is. It loves you. Here is a trophy.</p>
+        <p>Refresh the page to play again, if you want...</p>
+        <i class="nes-icon is-large trophy"></i>
+        <menu class="dialog-menu">
+          <button class="nes-btn is-success">Ok, thanks...</button>
+        </menu>
+      </form>
+    </dialog>
+  </body>
+</html>

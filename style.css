@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P');
+* {
+  font-family: 'Press Start 2P', sans-serif;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#title {
+  text-align: center;
+}
+
+@keyframes hide {
+  0% {
+    opacity: 1;
+  }
+
+  99% {
+    opacity: 0;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+#loading-screen {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  top: 0;
+  right: 0;
+  background-color: #209cee;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+
+  animation: hide 500ms ease-in 2s;
+  animation-fill-mode: forwards;
+}
+
+#loading-screen > h1 {
+  margin: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+#loading-screen > * {
+  animation: fadeIn ease 1.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.mash-logo {
+  height: 72px;
+  margin-left: 24px;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 16px;
+  height: 100%;
+  background-color: #212529;
+  color: white;
+}
+
+#selection-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+#choices {
+  display: flex;
+  width: 100%;
+  gap: 32px;
+}
+
+#rock-container {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 24px;
+  
+  width: 100%;
+  height: 100%;
+}
+
+#speech-bubble {
+  position: absolute;
+  bottom: 0;
+  
+  visibility: visible;
+  opacity: 1;
+  height: auto;
+  transition: opacity 750ms, visibility 750ms;
+}
+
+#speech-bubble.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#hearts {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  gap: 12px;
+  
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 750ms, visibility 750ms;
+}
+
+#hearts.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+@keyframes hover {
+  from {
+    transform: translateY(24px);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes happy {
+  from {
+    transform: rotate(0deg) translateX(30px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(30px) rotate(-360deg);
+  }
+}
+
+@keyframes sad {
+  from {
+    transform: translateX(100px) translateY(20px);
+  }
+  
+  to {
+    transform: translateX(-100px);
+  }
+}
+
+#rock {
+  animation-name: hover;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  max-height: 600px;
+  min-height: 0;
+  width: auto;
+}
+
+#rock.happy {
+  animation: happy 1.25s linear infinite;
+}
+
+#rock.sad {
+  animation: sad 600ms linear infinite alternate;
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 16px;
+}
+
+/* Short screens, like replt webview + mobile */
+@media screen and (max-height: 464px),
+@media screen and (min-width: 480px) {
+  #speech-bubble {
+    font-size: 8px;
+  }
+}
