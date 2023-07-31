@@ -11,6 +11,6 @@
   },
   "dependencies": {
     "@getmash/client-sdk": "^2.1.5",
-    "nes.css": "^2.3.0"
+    "nes.css": "latest"
   }
 }
